@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jwg.eliteinventory">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera.flash"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+
+        <!-- Splash screen -->
+        <activity
+            android:name=".splashactivity.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".mainactivities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
+        <!-- Settings Activity -->
+        <activity
+            android:name=".settingsactivities.MyPrefsActivity"
+            android:parentActivityName=".mainactivities.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Barcode Capture Acitivity -->
+        <activity
+            android:name=".barcodeactivities.BarcodeCaptureActivity"
+            android:label="Read Barcode"
+            android:screenOrientation="portrait" />
+
+        <!-- About The App Page -->
+        <activity
+            android:name=".mainactivities.About_Page"
+            android:parentActivityName=".mainactivities.MainActivity"
+            android:screenOrientation="portrait" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainactivities.MainActivity" />
+        </activity>
+    </application>
+</manifest>

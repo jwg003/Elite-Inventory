@@ -1,0 +1,38 @@
+<resources>
+
+	<!-- App Name -->
+    <string name="app_name">Elite Inventory</string>
+
+    <!-- Camera Activity -->
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Barcode Reader Sample</string>
+    <string name="barcode_header">Click Plus button to read a barcode</string>
+    <string name="read_barcode">Read Barcode</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_failure2">No barcode found! Hold the camera still!</string>
+    <string name="barcode_error">"Error reading barcode</string>
+    <string name="openDrawer">OpenDrawer</string>
+    <string name="closeDrawer">CloseDrawer</string>
+
+    <!-- About Page Strings -->
+    <string name="about_page_author">Author: John Graham</string>
+    <string name="about_page_version">Version: Beta 1.0.0</string>
+
+   
+    <!-- SettingsActivity Strings -->
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Keys -->
+    <string name="preferencesreen_key">preferenceScreenKey</string>
+    <string name="auto_focus_key">auto_focus_key</string>
+    <string name="use_flash_key">use_flash_key</string>
+
+
+</resources>
