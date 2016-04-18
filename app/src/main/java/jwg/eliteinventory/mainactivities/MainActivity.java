@@ -283,6 +283,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
+
         if (v.getId() == R.id.fab_camera) {
             Intent intent = new Intent(this, BarcodeCaptureActivity.class);
 
