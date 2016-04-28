@@ -24,10 +24,16 @@
     <string name="about_page_author">Author: John Graham</string>
     <string name="about_page_version">Version: Beta 1.0.0</string>
 
-   
     <!-- SettingsActivity Strings -->
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Navigation Drawer -->
+    <string name="contentDescriptionIcon">Icon</string>
+
+    <!-- Menu Items -->
+    <string name="Gmail">Gmail</string>
+    <string name="Delete_list">Delete List</string>
 
     <!-- Keys -->
     <string name="preferencesreen_key">preferenceScreenKey</string>

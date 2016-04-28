@@ -20,7 +20,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
 
-
     /**
      * @param mNavTitles String Array to store the passed titles Value from MainActivity.java
      * @param mIcons Int Array to store the passed icons resource value from MainActivity.java
@@ -35,9 +34,10 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     private String email;
     Context context;
 
-
-    // Creating a ViewHolder which extends the RecyclerView View Holder
-    // ViewHolder are used to to store the inflated views in order to recycle them
+    /**
+     * The ViewHolder is used to store the inflated layout.xml files to
+     * then be able to recycle them when drawer is not apparent
+     */
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         int Holderid;
@@ -48,30 +48,27 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         TextView email;
         Context contxt;
 
-        public ViewHolder(View itemView,int ViewType,Context c) {                 // Creating ViewHolder Constructor with View and viewType As a parameter
+        public ViewHolder(View itemView,int ViewType,Context c) {
             super(itemView);
             contxt = c;
             itemView.setClickable(true);
 
-            // Here we set the appropriate view in accordance with the the view type as passed when the holder object is created
-
+            /** This is where I am assigning the data to the holders to then be displayed **/
             if(ViewType == TYPE_ITEM) {
-                textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from item_row.xml
-                imageView = (ImageView) itemView.findViewById(R.id.rowIcon);// Creating ImageView object with the id of ImageView from item_row.xml
-                Holderid = 1;                                               // setting holder id as 1 as the object being populated are of type item row
+                textView = (TextView) itemView.findViewById(R.id.rowText);
+                imageView = (ImageView) itemView.findViewById(R.id.rowIcon);
+                Holderid = 1;
             }
             else{
-                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
-                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
-                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
-                Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
+                Name = (TextView) itemView.findViewById(R.id.header_name);
+                email = (TextView) itemView.findViewById(R.id.header_email);
+                profile = (ImageView) itemView.findViewById(R.id.header_imageview);
+                Holderid = 0;
             }
         }
     }
 
-
     /**
-     *
      * @param Titles Passing the Titles of each row into navigation drawer
      * @param Icons The icons next to the titles.
      * @param Name Name that is displayed in the header of the navigation drawer
@@ -79,66 +76,56 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
      * @param Profile This is the profile picture that is in the header. In my case the App Icon
      * @param passedContext The current context
      */
-    public DrawerAdapter(String Titles[], int Icons[], String Name, String Email, int Profile, Context passedContext){ // MyAdapter Constructor with titles and icons parameter
-        // titles, icons, name, email, profile pic are passed from the main activity as we
-        mNavTitles = Titles;                //have seen earlier
+    public DrawerAdapter(String Titles[], int Icons[], String Name, String Email, int Profile, Context passedContext){
+        mNavTitles = Titles;
         mIcons = Icons;
         name = Name;
         email = Email;
-        profile = Profile;                     //here we assign those passed values to the values we declared here
+        profile = Profile;
         this.context = passedContext;
     }
 
+    /** Does the actual inflating of the layouts **/
     @Override
     public DrawerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         if (viewType == TYPE_ITEM) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false); //Inflating the layout
-
-            ViewHolder vhItem = new ViewHolder(v,viewType,context); //Creating ViewHolder and passing the object of type view
-            return vhItem; // Returning the created object
-
-            //inflate your layout and pass it to view holder
-
-        } else if (viewType == TYPE_HEADER) {
-
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.header,parent,false); //Inflating the layout
-
-            ViewHolder vhHeader = new ViewHolder(v,viewType,context); //Creating ViewHolder and passing the object of type view
-
-            return vhHeader; //returning the object created
-
-
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false);
+            ViewHolder vhItem = new ViewHolder(v,viewType,context);
+            return vhItem;
+        }
+        else if (viewType == TYPE_HEADER) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.header,parent,false);
+            ViewHolder vhHeader = new ViewHolder(v,viewType,context);
+            return vhHeader;
         }
         return null;
-
     }
 
-    //Next we override a method which is called when the item in a row is needed to be displayed, here the int position
-    // Tells us item at which position is being constructed to be displayed and the holder id of the holder object tell us
-    // which view type is being created 1 for item row
+    /** This is where our titles and images get placed on the navigation drawer
+     * Header holder is id 0
+     * Item holder is id 1
+     * **/
     @Override
     public void onBindViewHolder(DrawerAdapter.ViewHolder holder, int position) {
-        if(holder.Holderid ==1) {                              // as the list view is going to be called after the header view so we decrement the
-            // position by 1 and pass it to the holder while setting the text and image
-            holder.textView.setText(mNavTitles[position - 1]); // Setting the Text with the array of our Titles
-            holder.imageView.setImageResource(mIcons[position -1]);// Settimg the image with array of our icons
+        if(holder.Holderid ==1) {
+            holder.textView.setText(mNavTitles[position - 1]);
+            holder.imageView.setImageResource(mIcons[position -1]);
         }
         else{
-
-            holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
+            holder.profile.setImageResource(profile);
             holder.Name.setText(name);
             holder.email.setText(email);
         }
     }
 
-    // This method returns the number of items present in the list
+    /** returns the number of items present in the list plus the header view **/
     @Override
     public int getItemCount() {
-        return mNavTitles.length+1; // the number of items in the list will be +1 the titles including the header view.
+        return mNavTitles.length+1;
     }
 
-    // Witht the following method we check what type of view is being passed
+    /** Positioning of the header and item view**/
     @Override
     public int getItemViewType(int position) {
         if (isPositionHeader(position))
@@ -150,5 +137,4 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     private boolean isPositionHeader(int position) {
         return position == 0;
     }
-
 }

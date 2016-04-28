@@ -6,14 +6,14 @@
     <item
         android:id="@id/action_send_email"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="@string/Gmail"
         android:icon="@drawable/ic_action_gmail"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@id/action_delete"
         android:orderInCategory="200"
-        android:title="Delete List"
+        android:title="@string/Delete_list"
         android:icon="@drawable/ic_action_delete"
         app:showAsAction="ifRoom"/>
 </menu>

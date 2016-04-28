@@ -11,9 +11,7 @@ import android.view.MenuItem;
 
 import jwg.eliteinventory.R;
 
-/**
- * Created by John on 4/12/2016.
- */
+/** Created by John **/
 public class MyPrefsActivity extends AppCompatActivity {
 
     @Override

@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
     <PreferenceCategory
         android:title="@string/action_settings">
-
 
         <CheckBoxPreference
             android:id="@id/auto_focus"
             android:key="@string/auto_focus_key"
             android:defaultValue="true"
-            android:title="@string/auto_focus"
-            />
+            android:title="@string/auto_focus"/>
 
         <CheckBoxPreference
             android:id="@id/use_flash"
             android:key="@string/use_flash_key"
             android:defaultValue="true"
-            android:title="@string/use_flash"
-            />
+            android:title="@string/use_flash" />
     </PreferenceCategory>
-
 </PreferenceScreen>

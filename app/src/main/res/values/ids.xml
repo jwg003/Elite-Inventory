@@ -3,15 +3,46 @@
 
     <item type="id" name="badgeImageView"/>
     <item name="mssgaction_bar_settings_button" type="id">mssgaction_bar_map_settings</item>
+    
+    <!-- Settings Activity -->
     <item name="auto_focus" type="id">auto_focus</item>
     <item name="use_flash" type="id">use_flash</item>
     <item name="action_settings" type="id">action_settings</item>
-    <item name="fab_camera" type="id">fab_camera</item>
-    <item name="recyclerView" type="id">recyclerView</item>
-
-    <!-- Toolbar Buttons -->
+    
+    <!-- Toolbar & ItsButtons -->
+    <item name="tool_bar" type="id">tool_bar</item>
     <item name="action_send_email" type="id">action_send_email</item>
     <item name="action_delete" type="id">action_delete</item>
+
+    <!-- About Page -->
+    <item name="about_page_image" type="id">about_page_image</item>
+    <item name="about_text_info" type="id">about_text_info</item>
+    <item name="about_text_version" type="id">about_text_version</item>
+
+    <!-- Splash Screen Activity -->
+    <item name="splashscreen" type="id">splashscreen</item>
+
+    <!-- Barcode capture Activity -->
+    <item name="preview" type="id">preview</item>
+    <item name="graphicOverlay" type="id">graphicOverlay</item>
+
+    <!-- MainActivity -->
+    <item name="drawerlayout" type="id">drawerlayout</item>
+    <item name="snackbar" type="id">snackbar</item>
+    <item name="custom_list" type="id">custom_list</item>
+    <item name="fab_camera" type="id">fab_camera</item>
+    <item name="recyclerview" type="id">recyclerview</item>
+    <item name="list_imageView" type="id">list_imageView</item>
+    <item name="barcode" type="id">barcode</item>
+
+    <!-- Header XML -->
+    <item name="header_name" type="id">header_name</item>
+    <item name="header_email" type="id">header_email</item>
+    <item name="header_imageview" type="id">header_imageview</item>
+
+    <!-- Navigation Drawer -->
+    <item name="rowIcon" type="id">rowIcon</item>
+    <item name="rowText" type="id">rowText</item>
 
 
 

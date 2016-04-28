@@ -57,7 +57,7 @@ import jwg.eliteinventory.barcodeactivities.camera.CameraSourcePreview;
 import jwg.eliteinventory.barcodeactivities.camera.GraphicOverlay;
 
 /**
- * Activity for the multi-tracker app.  This app detects barcodes and displays the value with the
+ * Main Activity for the Mobile Vision API.  This app detects barcodes and displays the value with the
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and ID of each barcode.
  */
@@ -107,8 +107,6 @@ public final class BarcodeCaptureActivity extends AppCompatActivity {
         } else {
             requestCameraPermission();
         }
-
-
 
         gestureDetector = new GestureDetector(this, new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());

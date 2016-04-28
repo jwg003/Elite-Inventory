@@ -1,14 +1,11 @@
 package jwg.eliteinventory.mainactivities;
 
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
+/** Created by John **/
 import jwg.eliteinventory.R;
 
 public class About_Page extends AppCompatActivity {
@@ -26,8 +23,10 @@ public class About_Page extends AppCompatActivity {
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
 
-        // Enable the Up button
+        // Enable the Up button (Back button)
         ab.setDisplayHomeAsUpEnabled(true);
+
+
 
     }
 

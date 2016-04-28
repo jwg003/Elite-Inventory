@@ -6,15 +6,13 @@
     android:layout_height="match_parent">
 
     <jwg.eliteinventory.barcodeactivities.camera.CameraSourcePreview
-        android:id="@+id/preview"
+        android:id="@id/preview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
         <jwg.eliteinventory.barcodeactivities.camera.GraphicOverlay
-            android:id="@+id/graphicOverlay"
+            android:id="@id/graphicOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </jwg.eliteinventory.barcodeactivities.camera.CameraSourcePreview>
-
 </LinearLayout>

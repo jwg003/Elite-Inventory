@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "BarcodeMain";
 
     /** Navigation Drawer **/
-    //First We Declare Titles And Icons For Our Navigation Drawer List View
-    //This Icons And Titles Are held in an Array as you can see
-
     String TITLES[] = {"About","Home","E-Mail","Settings","Clear List"};
     int ICONS[] = {R.drawable.ic_about_page,
             R.drawable.ic_action_home,
@@ -77,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adapter = new CustomListAdapter(this, scannedItems);
 
 
+
         /** Ability to tap and delete an entry **/
         adapter = new CustomListAdapter(this, scannedItems);
         ListView listView = (ListView) findViewById(R.id.custom_list);
@@ -97,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 adb.show();
             }
         });
+        /** End **/
 
         /** Begin Fake Data Set on launch **/
         if(displayFakeData){
@@ -122,9 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /** Initializes Material Design Bar at top of screen **/
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        /** End Custom Toolbar **/
 
         /** Begin Navigation Drawer **/
-        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new DrawerAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE, this);
         mRecyclerView.setAdapter(mAdapter);  // Setting the adapter to Recy
@@ -143,18 +143,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
                     onTouchDrawer(recyclerView.getChildPosition(child));
-
                     return true;
                 }
-
                 return false;
             }
 
             @Override
             public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
             }
-
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
@@ -164,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
 
-        Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
+        Drawer = (DrawerLayout) findViewById(R.id.drawerlayout);        // Drawer object Assigned to the view
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer, toolbar,R.string.openDrawer,R.string.closeDrawer){
 
             @Override
@@ -211,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    /** Action when you click a drawer item **/
     public void onTouchDrawer(final int position){
         if (position == 0){
             Drawer.closeDrawers();
@@ -235,6 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /** Pushing barcode list data to an email intent **/
     private void emailIntent(){
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -267,6 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean use_Flash = myPrefs.getBoolean("use_flash_key", false);
         PackageManager pm = getPackageManager();
 
+        /** Determines if device has a flash or not **/
         if(use_Flash){
             if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
                 // this device has a camera
@@ -279,10 +278,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Snackbar.make(v, "No Flash on this device!", Snackbar.LENGTH_LONG)
                         .setActionTextColor(Color.RED)
                         .show();
-
             }
         }
-
 
         if (v.getId() == R.id.fab_camera) {
             Intent intent = new Intent(this, BarcodeCaptureActivity.class);
@@ -324,7 +321,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (requestCode == RC_BARCODE_CAPTURE) {
-
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
@@ -344,7 +340,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);
 
-                } else {
+                }
+                else {
                     Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.barcode_failure, Snackbar.LENGTH_LONG);
                     snackbar.setActionTextColor(Color.YELLOW);
                     snackbar.show();

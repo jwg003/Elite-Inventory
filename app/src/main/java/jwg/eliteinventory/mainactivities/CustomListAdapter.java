@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import jwg.eliteinventory.R;
 
@@ -47,7 +45,7 @@ public class CustomListAdapter extends ArrayAdapter<ListItems> {
             convertView = layoutInflater.inflate(R.layout.list_item, null);
             holder = new ViewHolder();
 
-            holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.list_imageView);
             holder.barcodeView = (TextView) convertView.findViewById(R.id.barcode);
 
             convertView.setTag(holder);
